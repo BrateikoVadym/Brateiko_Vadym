@@ -1,0 +1,123 @@
+#include <iostream>
+
+#include <string>
+
+
+
+class Exam {
+
+private:
+
+std::string studentName; // Ім'я студента
+
+int ticketNumber;	// Номер білета
+
+int grade;	// Оцінка
+
+
+
+public:
+
+// Конструктор для ініціалізації
+
+Exam(std::string name, int ticket, int mark) : studentName(name), ticketNumber(ticket), grade(mark) {}
+
+
+
+// Метод для вводу даних
+
+void inputDetails() {
+
+std::cout << "Введіть ім'я студента: ";
+
+std::getline(std::cin, studentName);
+
+std::cout << "Введіть номер білета: ";
+
+std::cin >> ticketNumber;
+
+std::cout << "Введіть оцінку: "; 
+
+std::cin >> grade;
+
+std::cin.ignore(); // Очищення буфера після вводу числових значень
+
+}
+
+
+
+// Метод для виводу даних
+
+void displayDetails() const {
+
+std::cout << "Ім'я студента: " << studentName << std::endl;
+
+std::cout << "Номер білета: " << ticketNumber << std::endl;
+
+std::cout << "Оцінка: " << grade << std::endl;
+
+}
+
+// Метод для встановлення оцінки
+
+void setGrade(int newGrade) {
+
+grade = newGrade;
+
+}
+
+// Метод для отримання оцінки
+
+int getGrade() const {
+
+return grade;
+}
+
+};
+
+int main() {
+
+// Створення екземпляра класу та ініціалізація через конструктор
+
+Exam student1("John Doe", 101, 5);
+
+
+
+// Виклик методів для виведення інформації про студента
+
+std::cout << "Дані про студента 1:\n";
+
+student1.displayDetails();
+
+
+
+// Створення ще одного екземпляра класу та ініціалізація через метод вводу
+
+Exam student2("", 0, 0); // Початкові значення
+
+std::cout << "\nВведіть дані для студента 2:\n";
+
+student2.inputDetails();
+
+
+
+// Виведення інформації про студента 2
+
+std::cout << "\nДані про студента 2:\n";
+
+student2.displayDetails();
+
+
+
+// Оновлення оцінки студента 1 через метод присвоєння
+
+std::cout << "\nОновлення оцінки для студента 1.\n";
+
+student1.setGrade(4);
+
+student1.displayDetails();
+
+return 0;
+
+}
+

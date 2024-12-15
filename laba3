@@ -1,0 +1,33 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+double calculateY(double a, double b, double x) {
+    double numerator = pow(1 + sqrt(a * x + b), 0.25); // корінь в четвертій степені
+    double denominator = pow(sin(b * x), 2) + a; // sin^2(bx) + a
+    return numerator / denominator;
+}
+
+int main() {
+    // Параметри та початкові дані
+    double x_start = 4.3;
+    double x_end = 13.9;
+    double h = 1.2;
+    double a = 1.35;
+    double b = 8.4;
+    // Змінні для розрахунків
+    double sum_y = 0.0;
+    int count_y = 0;
+    // Табулювання функції
+    cout << "x\t\ty" << endl;
+
+
+    if (y > 1 && y < 3) { // Додаткова умова: якщо 1 < y < 3, додаємо до суми
+        sum_y += y;
+        count_y++;
+    }
+
+    cout << "\n Сума значень y для 1 < y < 3: " << sum_y << endl;
+    cout << "Кількість значень y для 1 < y < 3: " << count_y << endl;
+    return 0;
+}

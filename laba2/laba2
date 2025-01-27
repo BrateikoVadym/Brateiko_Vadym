@@ -1,0 +1,59 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+struct Data {
+    double a;
+    double b;
+    double x;
+    double result;
+};
+// Функція для перевірки умов і вибору формули
+int chooseFormula(double x) {
+    if (x <= 0) return 1;
+    else if (x > 0 && x < 1) return 2;
+    else if (x >= 1) return 3;
+    return 0; // на випадок, якщо жодна з умов не виконана 
+}
+
+double calculateFormula1(double x) { 
+    return exp(-x + 6);
+}
+double calculateFormula2(double a, double x) {
+    return pow(a * a + 1 + x, 1.0 / 5); 
+}
+double calculateFormula3(double b, double x) {
+    return b + sqrt(x);
+}
+
+int main() {
+    Data data;
+    // Введення параметрів
+    cout << "Введіть значення параметрів a, b та змінної x:" << endl;
+    cout << "a = ";
+    cin >> data.a;
+    cout << "b = ";
+    cin >> data.b;
+    cout << "x = ";
+    cin >> data.x;
+
+
+    int formula = chooseFormula(data.x); // Вибір формули на основі значення x
+    switch (formula) { 
+        case 1:
+            data.result = calculateFormula1(data.x);
+            break;
+        case 2:
+            data.result = calculateFormula2(data.a, data.x);
+            break;
+        case 3:
+            data.result = calculateFormula3(data.b, data.x);
+            break;
+        default:
+            cout << "Неправильне значення x." << endl;
+            return 1;
+    }
+
+    cout << "Результат обчислення: y = " << data.result << endl; 
+    return 0;
+}
